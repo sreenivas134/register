@@ -1,3 +1,79 @@
+# \wampp\www\
+
+This is a basic image uploading site developed in CakePHP 2.5.4 stable.
+Download as zip and extract it to 'wampp\www\' and rename it as 'register'.
+
+If you download it you should place the 'register' directory inside the 'www' directory
+in wampp server's installation folder.
+
+Database Requirements:
+
+1. create necessary DATABASE and TABLEs
+2. Registering them with the CakePHP
+
+1->Copy the below code and run it in the phpmyadmin's sql query box.
+########################### Copy the below code #########################################
+	CREATE DATABASE register;
+	USE register;
+	CREATE TABLE users(id INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+					   username VARCHAR(20),
+					   password VARCHAR(50),
+					   full_name VARCHAR(100),
+					   created DATETIME,
+					   modified DATETIME);
+	CREATE TABLE content(id INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+						 user_id INT(8),
+						 path VARCHAR(200),
+						 comment TEXT,
+						 created DATETIME,
+						 modified DATETIME);
+############################################################						 
+
+2-> Go to file '/register/app/config/database.php.default' 'database.php' then open
+it ad modify following values as given.
+
+	class DATABASE_CONFIG {
+
+		public $default = array(
+			'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'localhost',
+			'login' => 'root',		
+			'password' => '',      				#default password is empty
+			'database' => 'register',
+			'prefix' => '',
+			//'encoding' => 'utf8',
+		);
+
+		public $test = array(
+			'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'localhost',
+			'login' => 'user',
+			'password' => 'password',
+			'database' => 'test_database_name',
+			'prefix' => '',
+			//'encoding' => 'utf8',
+		);
+	}
+
+That's it, all done. You can go with opening opening 
+'localhost/register/app/' if it shows any error messages try to solve them.
+If no errors you can open 
+
+'localhost/register/contents/'
+
+
+
+
+
+
+
+
+
+
+
+
 # CakePHP
 
 [![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
