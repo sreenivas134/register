@@ -30,7 +30,7 @@ Database Requirements:
 ############################################################						 
 
 2-> Go to file '/register/app/config/database.php.default' 'database.php' then open
-it ad modify following values as given.
+it and modify following values as given.
 
 	class DATABASE_CONFIG {
 
